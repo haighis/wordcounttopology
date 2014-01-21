@@ -1,6 +1,11 @@
 Word Count Topology
 
-A Storm topology that will consume new fireflyy bookmarks from redis pub/sub word count queue and then using Apache Tika will parse content and count total words. I.e. 4021 words for the url http://www.news.com
+A Storm topology that will:
+- Consume new fireflyy bookmarks from redis pub/sub word count queue - spout
+- Save Html source an azure blob with the bookmarkid as the filename - bolt
+- Use Apache Tika will parse Html source to return raw content without html tags - bolt
+- Save Raw content without html tags to Azure blob with the bookmarkid as the filename - bolt
+- Count total words. I.e. 4021 words for the url http://www.news.com - bolt
 
 GetBookmarkToProcessSpout --> GetContentFromBookmarkUrlBolt --> SaveHtmlSourceToAzureBlob --> SaveRawContentOnlyToAzureBlob --> CountTotalWordsBolt 
 
