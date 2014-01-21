@@ -69,7 +69,7 @@ public class GetContentFromBookmarkUrlBolt extends BaseBasicBolt {
 			System.out.println("parsing content ********************************************");
 			System.out.println("*****************************************************************");
 			
-			collector.emit(new Values(url));
+			collector.emit(new Values(url, handler,metadata));
 			
 			//collector.emit(new Values(entry.getUserId(), product, categ));
 		} catch (Exception e) {
